@@ -2,7 +2,7 @@ import AnomalyCLIP_lib
 import torch
 import argparse
 import torch.nn.functional as F
-from FAPrompt import AnomalyCLIP_PromptLearner
+from FAPrompt import FAPrompt
 from loss import FocalLoss, BinaryDiceLoss, BinaryFocalLoss
 from utils import normalize
 from dataset import Dataset
@@ -14,6 +14,7 @@ from collections import OrderedDict
 import os
 import random
 from utils import get_transform
+
 def setup_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
@@ -21,9 +22,6 @@ def setup_seed(seed):
     random.seed(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
-
-def count_parameters(model):
-    return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 def train(args):
     logger = get_logger(args.save_path)
@@ -42,8 +40,9 @@ def train(args):
     prompt_learner = FAPrompt(model.to("cpu"), AnomalyCLIP_parameters)
     prompt_learner.to(device)
 
-    count = count_parameters(prompt_learner)
-    print(count)
+    for n, p in prompt_learner.named_parameters():
+        if p.requires_grad == True:
+            print(n)
 
     model.to(device)
     model.visual.DAPM_replace(DPAM_layer = 20)
@@ -66,7 +65,6 @@ def train(args):
         loss_ab_list = []
 
         for items in tqdm(train_dataloader):
-
 
             image = items['img'].to(device)
             label =  items['anomaly']
@@ -160,7 +158,7 @@ def train(args):
             loss += 0.5 * loss_dice(similarity_map2[:, 0, :, :], 1 - gt)
 
             optimizer.zero_grad()
-            (loss + image_loss2 + 0.1*loss_ab + loss_bias).backward()
+            (loss + image_loss + image_loss2 + 0.1*loss_ab + loss_bias).backward()
             optimizer.step()
             loss_list.append(loss.item())
 
@@ -188,7 +186,7 @@ if __name__ == '__main__':
     parser.add_argument("--feature_map_layer", type=int, nargs="+", default=[0, 1, 2, 3], help="zero shot")
     parser.add_argument("--features_list", type=int, nargs="+", default=[6, 12, 18, 24], help="features used")
 
-    parser.add_argument("--epoch", type=int, default=15, help="epochs")
+    parser.add_argument("--epoch", type=int, default=10, help="epochs")
     parser.add_argument("--learning_rate", type=float, default=0.001, help="learning rate")
     parser.add_argument("--batch_size", type=int, default=8, help="batch size")
     parser.add_argument("--image_size", type=int, default=518, help="image size")

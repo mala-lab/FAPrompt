@@ -82,13 +82,13 @@ def encode_text_with_prompt_ensemble(model, texts, device):
 def _get_clones(module, N):
     return nn.ModuleList([deepcopy(module) for i in range(N)])
 
-class AnomalyCLIP_PromptLearner(nn.Module):
+class FAPrompt(nn.Module):
     def __init__(self, clip_model, design_details):
         super().__init__()
         classnames = ["object"]
         self.n_cls = len(classnames)
         n_ctx_pos = 5
-        n_ctx_neg = 1
+        n_ctx_neg = 2
         self.num_p = 10
         self.k = 10
         self.text_encoder_n_ctx = design_details["learnabel_text_embedding_length"]

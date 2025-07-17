@@ -7,7 +7,6 @@ n_ctx=(12)
 t_n_ctx=(4)
 for i in "${!depth[@]}";do
     for j in "${!n_ctx[@]}";do
-    ## train on the VisA dataset
         base_dir= trained_on_mvtecad
         save_dir=/home/zhujiawen/AnomalyCLIP/checkpoints/${base_dir}/
         CUDA_VISIBLE_DEVICES=${device} python test.py --dataset SDD \

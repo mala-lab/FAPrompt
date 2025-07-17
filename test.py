@@ -2,7 +2,7 @@ import AnomalyCLIP_lib
 import torch
 import argparse
 import torch.nn.functional as F
-from FAPrompt import AnomalyCLIP_PromptLearner
+from FAPrompt import FAPrompt
 from loss import FocalLoss, BinaryDiceLoss
 from utils import normalize
 from dataset import Dataset
@@ -71,7 +71,7 @@ def test(args):
         metrics[obj]['image-auroc'] = 0
         metrics[obj]['image-ap'] = 0
 
-    prompt_learner = AnomalyCLIP_PromptLearner(model.to("cpu"), AnomalyCLIP_parameters)
+    prompt_learner = FAPrompt(model.to("cpu"), AnomalyCLIP_parameters)
     checkpoint = torch.load(args.checkpoint_path)
     prompt_learner.load_state_dict(checkpoint["prompt_learner"])
     prompt_learner.to(device)

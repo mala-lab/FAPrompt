@@ -39,7 +39,7 @@ def train(args):
     train_data = Dataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform, dataset_name = args.dataset)
     train_dataloader = torch.utils.data.DataLoader(train_data, batch_size=args.batch_size, shuffle=True)
 
-    prompt_learner = AnomalyCLIP_PromptLearner(model.to("cpu"), AnomalyCLIP_parameters)
+    prompt_learner = FAPrompt(model.to("cpu"), AnomalyCLIP_parameters)
     prompt_learner.to(device)
 
     count = count_parameters(prompt_learner)

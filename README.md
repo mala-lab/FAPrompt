@@ -2,4 +2,8 @@
 
 Official PyTorch implementation of ["Fine-grained Abnormality Prompt Learning for Zero-shot Anomaly Detection"](https://arxiv.org/pdf/2410.10289). 
 
-Code will be uploaded soon.
+## Overview
+Current zero-shot anomaly detection (ZSAD) methods show remarkable success in prompting large pre-trained vision-language models to detect anomalies in a target dataset without using any dataset-specific training or demonstration. However, these methods often focus on crafting/learning prompts that capture only coarse-grained semantics of abnormality, e.g., high-level semantics like `damaged`, `imperfect`, or `defective` objects. They therefore have limited capability in recognizing diverse abnormality details that deviate from these general abnormal patterns in various ways. To address this limitation, we propose \textbf{\coolname}, a novel framework designed to learn Fine-grained Abnormality Prompts for accurate ZSAD. 
+To this end, a novel `Compound Abnormality Prompt learning` (CAP) module is introduced in FAPrompt to learn a set of complementary, decomposed abnormality prompts, where abnormality prompts are enforced to model diverse abnormal patterns derived from the same normality semantic.
+On the other hand, the fine-grained abnormality patterns can be different from one dataset to another. To enhance the cross-dataset generalization,  another novel module, namely `Data-dependent Abnormality Prior learning` (DAP), is introduced in FAPrompt to learn a sample-wise abnormality prior from abnormal features of each test image to dynamically adapt the abnormality prompts to individual test images.
+Comprehensive experiments on 19 real-world datasets, covering both industrial defects and medical anomalies, demonstrate that FAPrompt substantially outperforms state-of-the-art methods by at least 3%-5% in both image- and pixel-level ZSAD tasks.

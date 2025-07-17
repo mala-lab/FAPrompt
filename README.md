@@ -8,24 +8,24 @@ Current zero-shot anomaly detection (ZSAD) methods show remarkable success in pr
 ![image](./img/framework.png)
 
 ## Setup
-tqdm == 4.67.1
-timm == 0.6.12
-scikit-image == 0.19.2
-scikit-learn == 1.0.2
-scipy == 1.7.3
-seaborn == 0.11.2
-torch == 2.4.1
-torchvision == 0.19.1
-transformers == 4.31.0
+- tqdm == 4.67.1
+- timm == 0.6.12
+- scikit-image == 0.19.2
+- scikit-learn == 1.0.2
+- scipy == 1.7.3
+- seaborn == 0.11.2
+- torch == 2.4.1
+- torchvision == 0.19.1
+- transformers == 4.31.0
 
 ## Device
-Single NVIDIA GeForce RTX 3090
+- Single NVIDIA GeForce RTX 3090
 
 ## Prepare Your Data
 #### Step 1. Download the Anomaly Detection Datasets
-Industrial Anomaly Detection Datasets: [MVTec AD](https://www.mvtec.com/company/research/datasets/mvtec-ad), [VisA](https://github.com/amazon-science/spot-diff), [ELPV](https://github.com/zae-bayern/elpv-dataset), [SDD](https://www.vicos.si/resources/kolektorsdd/), [AITEX](https://www.aitex.es/afid/), [BTAD](http://avires.dimi.uniud.it/papers/btad/btad.zip), [DAGM](https://www.kaggle.com/datasets/mhskjelvareid/dagm-2007-competition-dataset-optical-inspection), [DTD-Synthetic](https://drive.google.com/drive/folders/10OyPzvI3H6llCZBxKxFlKWt1Pw1tkMK1), [MPDD](https://github.com/stepanje/MPDD).
+- Industrial Anomaly Detection Datasets: [MVTec AD](https://www.mvtec.com/company/research/datasets/mvtec-ad), [VisA](https://github.com/amazon-science/spot-diff), [ELPV](https://github.com/zae-bayern/elpv-dataset), [SDD](https://www.vicos.si/resources/kolektorsdd/), [AITEX](https://www.aitex.es/afid/), [BTAD](http://avires.dimi.uniud.it/papers/btad/btad.zip), [DAGM](https://www.kaggle.com/datasets/mhskjelvareid/dagm-2007-competition-dataset-optical-inspection), [DTD-Synthetic](https://drive.google.com/drive/folders/10OyPzvI3H6llCZBxKxFlKWt1Pw1tkMK1), [MPDD](https://github.com/stepanje/MPDD).
 
-Medical Anomaly Detection Datasets: [BrainMRI](https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection), [HeadCT](https://www.kaggle.com/datasets/felipekitamura/head-ct-hemorrhage), [LAG](https://github.com/smilell/AG-CNN), [Br35H](https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection), [CVC-ColonDB](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [CVC-ClinicDB](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [Kvasir](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [Endo](https://drive.google.com/file/d/1LNpLkv5ZlEUzr_RPN5rdOHaqk0SkZa3m/view), [ISIC](https://drive.google.com/file/d/1UeuKgF1QYfT1jTlYHjxKB3tRjrFHfFDR/view), [TN3K](https://github.com/haifangong/TRFE-Net-for-thyroid-nodule-segmentation?tab=readme-ov-file).
+- Medical Anomaly Detection Datasets: [BrainMRI](https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection), [HeadCT](https://www.kaggle.com/datasets/felipekitamura/head-ct-hemorrhage), [LAG](https://github.com/smilell/AG-CNN), [Br35H](https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection), [CVC-ColonDB](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [CVC-ClinicDB](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [Kvasir](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [Endo](https://drive.google.com/file/d/1LNpLkv5ZlEUzr_RPN5rdOHaqk0SkZa3m/view), [ISIC](https://drive.google.com/file/d/1UeuKgF1QYfT1jTlYHjxKB3tRjrFHfFDR/view), [TN3K](https://github.com/haifangong/TRFE-Net-for-thyroid-nodule-segmentation?tab=readme-ov-file).
 
 #### Step 2. Generate the JSON file for Datasets (same as [AnomalyCLIP](https://github.com/zqhang/AnomalyCLIP/tree/main?tab=readme-ov-file))
 
@@ -33,19 +33,19 @@ Medical Anomaly Detection Datasets: [BrainMRI](https://www.kaggle.com/datasets/n
 
 ## Run FAPrompt
 #### Quick Start
-Update the `checkpoint_path` to the path of pre-train model, set `dataset` to the name of the test dataset, and specify `data_path` as the path to the test dataset. Then, run
+- Update the `checkpoint_path` to the path of pre-train model, set `dataset` to the name of the test dataset, and specify `data_path` as the path to the test dataset. Then, run
 ```bash
 bash test.sh
 ```
 
 #### Training
-Train your own weights by runing
+- Train your own weights by runing
 ```bash
 bash train.sh
 ```
 
 ## Citation
-If you find the implementation useful, we would appreciate your acknowledgement via citing our FAPrompt paper:
+- If you find the implementation useful, we would appreciate your acknowledgement via citing our FAPrompt paper:
 ```bibtex
 @inproceedings{zhu2024fine,
   title={Fine-grained Abnormality Prompt Learning for Zero-shot Anomaly Detection},

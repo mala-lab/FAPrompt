@@ -8,6 +8,15 @@ Current zero-shot anomaly detection (ZSAD) methods show remarkable success in pr
 ![image](./img/framework.png)
 
 ## Setup
+tqdm == 4.67.1
+timm == 0.6.12
+scikit-image == 0.19.2
+scikit-learn == 1.0.2
+scipy == 1.7.3
+seaborn == 0.11.2
+torch == 2.4.1
+torchvision == 0.19.1
+transformers == 4.31.0
 
 ## Device
 Single NVIDIA GeForce RTX 3090

@@ -7,6 +7,7 @@ Current zero-shot anomaly detection (ZSAD) methods show remarkable success in pr
 To this end, a novel `Compound Abnormality Prompt learning` (CAP) module is introduced in FAPrompt to learn a set of complementary, decomposed abnormality prompts, where abnormality prompts are enforced to model diverse abnormal patterns derived from the same normality semantic.
 On the other hand, the fine-grained abnormality patterns can be different from one dataset to another. To enhance the cross-dataset generalization,  another novel module, namely `Data-dependent Abnormality Prior learning` (DAP), is introduced in FAPrompt to learn a sample-wise abnormality prior from abnormal features of each test image to dynamically adapt the abnormality prompts to individual test images.
 Comprehensive experiments on 19 real-world datasets, covering both industrial defects and medical anomalies, demonstrate that FAPrompt substantially outperforms state-of-the-art methods by at least 3%-5% in both image- and pixel-level ZSAD tasks.
+![image](./framework.png)
 
 ## Setup
 

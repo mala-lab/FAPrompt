@@ -29,7 +29,7 @@ Current zero-shot anomaly detection (ZSAD) methods show remarkable success in pr
 
 #### Step 2. Generate the JSON file for Datasets (same as [AnomalyCLIP](https://github.com/zqhang/AnomalyCLIP/tree/main?tab=readme-ov-file))
 
-#### Step 3. Download the Pre-train Models on [Google Drive]().
+#### Step 3. Download the Pre-train Models on [Google Drive](https://drive.google.com/drive/folders/11Z5msKSrnIECamZO4kYy_rciQXS0v9vI?usp=sharing).
 
 ## Run FAPrompt
 #### Quick Start
